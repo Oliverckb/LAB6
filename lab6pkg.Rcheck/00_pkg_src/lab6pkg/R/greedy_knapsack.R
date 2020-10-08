@@ -17,7 +17,6 @@
 #'@export
 
 greedy_knapsack <- function(x,W){
-
   x$id <- 1:length(x$w)     #give the id to each line
   df1 <- x[which(x$w < W),]  #find the items that can be taken into the knapsack
   df1$ratio <- df1$v/df1$w   #calculate the ratio v/w
@@ -34,9 +33,9 @@ greedy_knapsack <- function(x,W){
     weight <- weight + df1$w[i]  #add the weight of items
     elements <- c(elements,df1$id[i])  #put it in the elements
     i <- i+1
-
   }
 
+  # print(elements)
   l <- list(value=value,elements=elements)
 }
 
@@ -46,6 +45,11 @@ greedy_knapsack <- function(x,W){
 # knapsack_objects <-data.frame(w=sample(1:4000, size = n, replace = TRUE),
 #     v=runif(n = n, 0, 10000)
 #   )
-#
+# 
 # l1 <- greedy_knapsack(x = knapsack_objects[1:800,], W = 3500)
 # l1
+
+
+
+
+

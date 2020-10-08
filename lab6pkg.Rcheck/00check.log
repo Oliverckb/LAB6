@@ -1,0 +1,49 @@
+* using log directory 'D:/EX/lab6/lab6/lab6pkg.Rcheck'
+* using R version 4.0.2 (2020-06-22)
+* using platform: x86_64-w64-mingw32 (64-bit)
+* using session charset: CP936
+* using options '--no-manual --as-cran'
+* checking for file 'lab6pkg/DESCRIPTION' ... OK
+* checking extension type ... Package
+* this is package 'lab6pkg' version '0.1.0'
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... OK
+* checking if this is a source package ... OK
+* checking if there is a namespace ... OK
+* checking for executable files ... OK
+* checking for hidden files and directories ... OK
+* checking for portable file names ... OK
+* checking serialization versions ... OK
+* checking whether package 'lab6pkg' can be installed ... OK
+* checking installed package size ... OK
+* checking package directory ... OK
+* checking for future file timestamps ... OK
+* checking DESCRIPTION meta-information ... OK
+* checking top-level files ... OK
+* checking for left-over files ... OK
+* checking index information ... OK
+* checking package subdirectories ... OK
+* checking R files for non-ASCII characters ... OK
+* checking R files for syntax errors ... OK
+* checking whether the package can be loaded ... OK
+* checking whether the package can be loaded with stated dependencies ... OK
+* checking whether the package can be unloaded cleanly ... OK
+* checking whether the namespace can be loaded with stated dependencies ... OK
+* checking whether the namespace can be unloaded cleanly ... OK
+* checking dependencies in R code ... OK
+* checking S3 generic/method consistency ... OK
+* checking replacement functions ... OK
+* checking foreign function calls ... OK
+* checking R code for possible problems ... OK
+* checking for missing documentation entries ... WARNING
+Undocumented code objects:
+  'greedy_knapsack'
+All user-level objects in a package should have documentation entries.
+See chapter 'Writing R documentation files' in the 'Writing R
+Extensions' manual.
+* checking examples ... NONE
+* checking for non-standard things in the check directory ... OK
+* checking for detritus in the temp directory ... OK
+* DONE
+Status: 1 WARNING
