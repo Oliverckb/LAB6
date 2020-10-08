@@ -9,7 +9,8 @@
 #'@usage  greedy_knapsack(x,W)
 #'
 #'@examples
-#' set.seed(42)
+#'   RNGversion(min(as.character(getRversion()),"3.6.1"))
+#'   set.seed(12345,kind="Mersenne-Twister",normal.kind = "Inversion")
 #'   n <- 2000
 #'   knapsack_objects <-data.frame(w=sample(1:4000, size = n, replace = TRUE),
 #'                              v=runif(n = n, 0, 10000))
@@ -17,6 +18,11 @@
 #'@export
 
 greedy_knapsack <- function(x,W){
+
+  # RNGversion(min(as.character(getRversion()),"3.5.9"))
+  # set.seed(42,kind="Mersenne-Twister",normal.kind = "Inversion")
+
+  stopifnot(is.data.frame(x),W>0)
 
   x$id <- 1:length(x$w)     #give the id to each line
   df1 <- x[which(x$w < W),]  #find the items that can be taken into the knapsack
@@ -34,14 +40,16 @@ greedy_knapsack <- function(x,W){
     weight <- weight + df1$w[i]  #add the weight of items
     elements <- c(elements,df1$id[i])  #put it in the elements
     i <- i+1
-
   }
 
-  l <- list(value=value,elements=elements)
+  l <- list(value=round(value),elements=elements)
+  return(l)
 }
 
 ####just for test
 # set.seed(42)
+# RNGversion(min(as.character(getRversion()),"3.5.9"))
+# set.seed(42,kind="Mersenne-Twister",normal.kind = "Inversion")
 # n <- 2000
 # knapsack_objects <-data.frame(w=sample(1:4000, size = n, replace = TRUE),
 #     v=runif(n = n, 0, 10000)

@@ -1,13 +1,15 @@
 Package: lab6pkg
 Type: Package
-Title: What the Package Does (Title Case)
+Title: functions for knapsack problem
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
+Author: Chen,Aqsa,Samira
+Maintainer: CHEN <Olivandtempest@gmail.com>,Aqsa<aqsaciit@gmail.com>
 Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
+Suggests: testthat
+RoxygenNote: 7.1.1
 NeedsCompilation: no
-Packaged: 2020-10-08 13:30:18 UTC; Administrator
+Packaged: 2020-10-08 14:37:57 UTC; Administrator

@@ -36,14 +36,37 @@
 * checking replacement functions ... OK
 * checking foreign function calls ... OK
 * checking R code for possible problems ... OK
-* checking for missing documentation entries ... WARNING
-Undocumented code objects:
-  'greedy_knapsack'
-All user-level objects in a package should have documentation entries.
-See chapter 'Writing R documentation files' in the 'Writing R
-Extensions' manual.
-* checking examples ... NONE
+* checking Rd files ... OK
+* checking Rd metadata ... OK
+* checking Rd line widths ... OK
+* checking Rd cross-references ... OK
+* checking for missing documentation entries ... OK
+* checking for code/documentation mismatches ... OK
+* checking Rd \usage sections ... OK
+* checking Rd contents ... OK
+* checking for unstated dependencies in examples ... OK
+* checking examples ... OK
+* checking for unstated dependencies in 'tests' ... OK
+* checking tests ... ERROR
+  Running 'testthat.R'
+Running the tests in 'tests/testthat.R' failed.
+Last 13 lines of output:
+  > library(testthat)
+  > library(lab6pkg)
+  > 
+  > test_check("lab6pkg")
+  [31m--[39m [31m1. Failure: Function return correct results. (@testthat.r#31) [39m [31m--[39m
+  round(gk$value) not equal to 15428.
+  1/1 mismatches
+  [1] 8429 - 15428 == -6999
+  
+  == testthat results  ===============================================
+  [ OK: 14 | SKIPPED: 0 | WARNINGS: 1 | FAILED: 1 ]
+  1. Failure: Function return correct results. (@testthat.r#31) 
+  
+  Error: testthat unit tests failed
+  Execution halted
 * checking for non-standard things in the check directory ... OK
 * checking for detritus in the temp directory ... OK
 * DONE
-Status: 1 WARNING
+Status: 1 ERROR
