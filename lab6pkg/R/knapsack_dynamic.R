@@ -4,7 +4,17 @@
 #' @param W is maximum weight(capacity) of kanpsack 
 #' @return \code{list} List of object containing \code{value} giving maximum value of Knapsack out of dataframe and \code{elements} giving weight of 
 #' selected elements from dataframe x 
-#' @examples ?
+#' @examples 
+#' 1:knapsack_dynamic(knapsack_objects[1:12,],3500)
+#' $value
+#' [1] 14130
+#' $elements
+#' [1] 6 3
+#' 2:knapsack_dynamic(knapsack_objects[1:8,],2000)
+#' $value
+#' [1] 6661
+#' $elements
+#' [1] 8 3
 #' @description The knapsack problem is a problem in combinatorial optimization:
 #' Given a set of items, each with a weight and a value,
 #' determine the number of each item to include in a collection 
@@ -22,44 +32,43 @@ knapsack_dynamic <- function(x,W){
   #A is value matrix
   #A columns are maximum weight of knapsack(0:W)
   #A rows are items(x$w)(0:heaviest item)
-  A <- matrix(0, nrow = length(x$w)+1, ncol = W+1)
-  A[,1]<-0
-  A[1,]<-0
+  lw<- length(x$w)
+  A <- matrix(0, nrow = lw+1, ncol = W+1)
   
-  for (i in 2:length(x$w)+1) {
+  
+  for (i in 2:(lw+1)) {
     for (j in 2:(W+1)) {
-      if (x$w[i]>j) {
+      if ((x$w[i-1])>j) {
         A[i,j]<- A[i-1,j]
       }
       else{
-        A[i,j]<- max(A[i-1,j],x$v[i]+A[i-1,j-x$w[i]])
+        A[i,j]<- max(A[i-1,j],(x$v[i-1]+A[i-1,j-x$w[i-1]]))
       }
     }
   }
-  
   #Now finding included elements in knapsack, maximum value and current weight of knapsack
   
-  i <- length(x$w)+1
+  i <- lw+1
   j <- W+1
   k <- 1
   knapsack_Elements <- c()
   TotalW <- 0
   MaxValue <- 0
   
-  while (i>1 & j>1) 
-  {
-    if(A[i,j] == A[i-1,j])
-    {
+  repeat{
+    if(A[i,j] == A[i-1,j]) {
       i <- i-1
     }
-    else
-    {
-      knapsack_Elements[k] <- i
+    else {
+      knapsack_Elements[k] <- i-1
       k<- k+1
-      MaxValue <- MaxValue + x[i,2]
-      j <- j-x[i,1]
+      j <- j-x$w[i-1]
       i <- i-1
     }
+    
+    if((i<= 1) ||(j<=1)) {
+      return(list( 'value' = round(A[lw+1, (W+1)]), 'elements' = knapsack_Elements))
+      break}
   }
-  return(list( 'Max Value' = round(A[length(x$w)+1, (W+1)]), 'Included Elements' = sort(knapsack_Elements)))
-  }
+}
+system.time(knapsack_dynamic(knapsack_objects[1:12,],3500))
