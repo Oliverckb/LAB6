@@ -1,28 +1,35 @@
 #' Dynamic programming Solution for Kanpsack Problem
-#' @title Knapsack_dynamic 
+#' @name Knapsack_dynamic 
 #' @param x is a dataframe constising 
 #' @param W is maximum weight(capacity) of kanpsack 
 #' @return \code{list} List of object containing \code{value} giving maximum value of Knapsack out of dataframe and \code{elements} giving weight of 
 #' selected elements from dataframe x 
-#' @examples 
-#' 1:knapsack_dynamic(knapsack_objects[1:12,],3500)
-#' $value
-#' [1] 14130
-#' $elements
-#' [1] 6 3
-#' 2:knapsack_dynamic(knapsack_objects[1:8,],2000)
-#' $value
-#' [1] 6661
-#' $elements
-#' [1] 8 3
+#' @usage knapsack_dynamic(x,W)
+#'
+#' @examples
+#'   RNGversion(min(as.character(getRversion()),"3.6.1"))
+#'   set.seed(12345,kind="Mersenne-Twister",normal.kind = "Inversion")
+#'   n <- 2000
+#'   knapsack_objects <-data.frame(w=sample(1:4000, size = n, replace = TRUE),
+#'                              v=runif(n = n, 0, 10000))
+#'   1:knapsack_dynamic(knapsack_objects[1:12,],3500)
+#'   $value
+#'   [1] 14130
+#'   $elements
+#'   [1] 6 3
+#'   2:knapsack_dynamic(knapsack_objects[1:8,],2000)
+#'   $value
+#'   [1] 6661
+#'   $elements
+#'   [1] 8 3
 #' @description The knapsack problem is a problem in combinatorial optimization:
 #' Given a set of items, each with a weight and a value,
 #' determine the number of each item to include in a collection 
 #' so that the total weight is less than or equal to a given limit and the total value is as large as possible.
 #' This function should return the same results as the brute force algorithm,
 #' but unlike the brute force it should scale much better since the algorithm will run in O<Wn>.
-#' @references \url{https://en.wikipedia.org/wiki/Knapsack_problem#0.2F1_knapsack_problem}
-#' @export knapsack_dynamic
+#' @seealso  \url{https://en.wikipedia.org/wiki/Knapsack_problem#0.2F1_knapsack_problem}
+#' @export
 
 
 
