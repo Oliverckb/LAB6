@@ -1,14 +1,14 @@
 #' Dynamic programming Solution for Kanpsack Problem
 #' @name Knapsack_dynamic 
-#' @param x is a dataframe constising 
+#' @param x is a data frame with two columns w(weight) and v(value)
 #' @param W is maximum weight(capacity) of kanpsack 
 #' @return \code{list} List of object containing \code{value} giving maximum value of Knapsack out of dataframe and \code{elements} giving weight of 
-#' selected elements from dataframe x 
+#' selected elements from data frame x 
 #' @usage knapsack_dynamic(x,W)
 #'
 #' @examples
 #'   RNGversion(min(as.character(getRversion()),"3.6.1"))
-#'   set.seed(12345,kind="Mersenne-Twister",normal.kind = "Inversion")
+#'   set.seed(42,kind="Mersenne-Twister",normal.kind = "Inversion")
 #'   n <- 2000
 #'   knapsack_objects <-data.frame(w=sample(1:4000, size = n, replace = TRUE),
 #'                              v=runif(n = n, 0, 10000))
@@ -16,12 +16,12 @@
 #'   $value
 #'   [1] 14130
 #'   $elements
-#'   [1] 6 3
+#'   [1] 3 6
 #'   2:knapsack_dynamic(knapsack_objects[1:8,],2000)
 #'   $value
 #'   [1] 6661
 #'   $elements
-#'   [1] 8 3
+#'   [1] 3 8
 #' @description The knapsack problem is a problem in combinatorial optimization:
 #' Given a set of items, each with a weight and a value,
 #' determine the number of each item to include in a collection 
@@ -38,9 +38,18 @@ knapsack_dynamic <- function(x,W){
   stopifnot(is.data.frame(x), is.numeric(x$v), is.numeric(x$w), is.numeric(W), W!=1)
   #A is value matrix
   #A columns are maximum weight of knapsack(0:W)
-  #A rows are items(x$w)(0:heaviest item)
+  #A rows are items(x$w)(0:weight of the last item)
+  
   lw<- length(x$w)
   A <- matrix(0, nrow = lw+1, ncol = W+1)
+  
+  # defining knapsack_object
+  
+  # RNGversion(min(as.character(getRversion()),"3.6.1"))
+  # set.seed(42,kind="Mersenne-Twister",normal.kind = "Inversion")
+  # n <- 2000
+  # knapsack_objects <-data.frame(w=sample(1:4000, size = n, replace = TRUE),
+  #                              v=runif(n = n, 0, 10000))
   
   
   for (i in 2:(lw+1)) {
@@ -74,8 +83,8 @@ knapsack_dynamic <- function(x,W){
     }
     
     if((i<= 1) ||(j<=1)) {
-      return(list( 'value' = round(A[lw+1, (W+1)]), 'elements' = knapsack_Elements))
+      return(list( 'value' = round(A[lw+1, (W+1)]), 'elements' = sort(knapsack_Elements)))
       break}
   }
 }
-system.time(knapsack_dynamic(knapsack_objects[1:12,],3500))
+#system.time(knapsack_dynamic(knapsack_objects[1:12,],3500))
