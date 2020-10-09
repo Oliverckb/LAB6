@@ -28,7 +28,7 @@ test_that("Function return correct results.", {
   expect_true(all(round(gk$elements) %in% c(3, 8)))
 
   gk <- greedy_knapsack(x = knapsack_objects[1:8,], W = 2000)
-  expect_equal(round(gk$value), 15428)
+  expect_equal(round(gk$value), 8429)
   expect_true(all(round(gk$elements) %in% c(3, 8)))
 
   gk <- greedy_knapsack(x = knapsack_objects[1:12,], W = 2000)

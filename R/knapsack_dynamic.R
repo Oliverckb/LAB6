@@ -12,16 +12,8 @@
 #'   n <- 2000
 #'   knapsack_objects <-data.frame(w=sample(1:4000, size = n, replace = TRUE),
 #'                              v=runif(n = n, 0, 10000))
-#'   1:knapsack_dynamic(knapsack_objects[1:12,],3500)
-#'   $value
-#'   [1] 14130
-#'   $elements
-#'   [1] 3 6
-#'   2:knapsack_dynamic(knapsack_objects[1:8,],2000)
-#'   $value
-#'   [1] 6661
-#'   $elements
-#'   [1] 3 8
+#'   l<-knapsack_dynamic(knapsack_objects[1:12,],3500)
+#'   
 #' @description The knapsack problem is a problem in combinatorial optimization:
 #' Given a set of items, each with a weight and a value,
 #' determine the number of each item to include in a collection 

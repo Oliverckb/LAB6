@@ -6,7 +6,7 @@ knapsack_objects <-data.frame(w=sample(1:4000, size = n, replace = TRUE),
                               v=runif(n = n, 0, 10000)
 )
 
-knapsack_BruteForce <- function(x,W){
+knapsack_brute_force <- function(x,W){
 
   item <- NULL
   value <- NULL
