@@ -78,7 +78,9 @@ knapsack_dynamic <- function(x,W){
       break}
   }
 }
-#system.time(knapsack_dynamic(knapsack_objects[1:12,],3500))
+# Question How much time does it takes to run the algorithm for n = 500 objects?
+
+# system.time(knapsack_dynamic(knapsack_objects[1:16,],3500))
 
 # Profiling
 # install library --> devtools::install_github("hadley/lineprof")

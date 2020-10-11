@@ -24,13 +24,13 @@
 #' @importFrom utils combn
 #' @export
  
-# set.seed(42)
+set.seed(42)
 # RNGversion(min(as.character(getRversion()),"4.0.2"))
 # set.seed(42,kind="Mersenne-Twister",normal.kind = "Inversion")
-# n <- 2000
-# knapsack_objects <-data.frame(w=sample(1:4000, size = n, replace = TRUE),
-#                               v=runif(n = n, 0, 10000)
-# )
+n <- 2000
+knapsack_objects <-data.frame(w=sample(1:4000, size = n, replace = TRUE),
+                              v=runif(n = n, 0, 10000)
+)
 
 brute_force_knapsack <- function(x, W, parallel=FALSE)
 {
@@ -93,9 +93,9 @@ brute_force_knapsack <- function(x, W, parallel=FALSE)
 }
 
 #Question How much time does it takes to run the algorithm for n = 500 objects?
-# system.time(brute_force_knapsack(knapsack_objects[1:16,] , 3500))
+# system.time(brute_force_knapsack(knapsack_objects[1:12,] , 3500))
 # user  system elapsed 
-# 0.68    0.00    0.67
+# 0.90    0.00    0.91
 
 # Profiling
 # install library --> devtools::install_github("hadley/lineprof")
