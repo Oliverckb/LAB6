@@ -12,7 +12,7 @@ greedy_knapsack(x,W)
 \item{W}{A number. the overall weight}
 }
 \value{
-list with maximium value and picked elements
+list with maximum value and picked elements
 }
 \description{
 implement the function using greedy method.

@@ -12,7 +12,7 @@
 #'   n <- 2000
 #'   knapsack_objects <-data.frame(w=sample(1:4000, size = n, replace = TRUE),
 #'                              v=runif(n = n, 0, 10000))
-#'   l<-knapsack_brute_force_knapsack(knapsack_objects[1:12,],3500)
+#'   l<- brute_force_knapsack(knapsack_objects[1:12,],3500)
 #'   
 #' @description The knapsack problem is a problem in combinatorial optimization:
 #' Given a set of items, each with a weight and a value,
@@ -22,17 +22,17 @@
 #' @seealso  \url{https://en.wikipedia.org/wiki/Knapsack_problem#0.2F1_knapsack_problem}
 #' @export
  
-set.seed(42)
-RNGversion(min(as.character(getRversion()),"4.0.2"))
-set.seed(42,kind="Mersenne-Twister",normal.kind = "Inversion")
-n <- 2000
-knapsack_objects <-data.frame(w=sample(1:4000, size = n, replace = TRUE),
-                              v=runif(n = n, 0, 10000)
-)
+# set.seed(42)
+# RNGversion(min(as.character(getRversion()),"4.0.2"))
+# set.seed(42,kind="Mersenne-Twister",normal.kind = "Inversion")
+# n <- 2000
+# knapsack_objects <-data.frame(w=sample(1:4000, size = n, replace = TRUE),
+#                               v=runif(n = n, 0, 10000)
+# )
 
 brute_force_knapsack <- function(x, W, parallel=FALSE)
 {
-  stopifnot(is.data.frame(x) || is.numeric(n) || W >= 0 )
+  stopifnot(is.data.frame(x), is.numeric(n), W >= 0 )
   
   if(parallel == FALSE)
   {

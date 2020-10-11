@@ -28,7 +28,7 @@ This function will run in O<2^n>.
   n <- 2000
   knapsack_objects <-data.frame(w=sample(1:4000, size = n, replace = TRUE),
                              v=runif(n = n, 0, 10000))
-  l<-knapsack_brute_force_knapsack(knapsack_objects[1:12,],3500)
+  l<- brute_force_knapsack(knapsack_objects[1:12,],3500)
   
 }
 \seealso{
