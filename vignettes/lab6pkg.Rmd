@@ -43,10 +43,10 @@ This package contain three different functions for solving _the Knapsack Problem
 
 The only solution that is guaranteed to give a correct answer in all situations for the knapsack problem
 is using brute-force search, i.e. going through all possible alternatives and return the maximum value
-found. This approach is of complexity $$O(2^n)$$ since all possible combinations $$2^n$$ needs to be evaluated.
+found. This approach is of complexity $O(2^n)$ since all possible combinations $2^n$ needs to be evaluated.
 
 
-The Algorithm can be executed as shown below. The time taken for 16 objects are shown below.
+The Algorithm can be executed as shown below. The time taken for 16 objects is shown below.
 
 ```{r runCode, echo=TRUE}
 set.seed(42, kind = "Mersenne-Twister", normal.kind = "Inversion")
@@ -56,10 +56,10 @@ brute_force_knapsack(knapsack_objects[1:12,],2000)
 system.time(brute_force_knapsack(knapsack_objects[1:12,],3500))
 ```
 
-<p> After profiling, it can be seen that it is taking too much time in serial operation.The time taken for $$n=16$$ objects.
+<p> After profiling, it can be seen that it is taking too much time in serial operation.The time taken for $n=16$ objects.
 
 ## Second function: **Knapsack_dynamic()**
-<p> The Algorithm can be executed and the time taken for n=500 objects as shown below.
+<p> The Algorithm can be executed and the time taken for n=500 objects as shown below. As it can be seen that dynamic algorithm is  faster than the Brute Force because the dynamic algorithm will run in $O(Wn)$
 
 ```{r}
 set.seed(42, kind = "Mersenne-Twister", normal.kind = "Inversion")
@@ -71,7 +71,7 @@ system.time(knapsack_dynamic(knapsack_objects[1:12,],3500))
 ```
 
 ## Third function: **greedy_knapsack()**
-<p> The Algorithm can be executed and the time taken for n=10000 objects as shown below.
+<p> The Algorithm can be executed and the time taken for n=10000 objects as shown below. Greedy algorithm is the fastest of all because the computational complexity for this algorithm is $O(nlogn)$ due to its sorting mechanism.  
 
 ```{r}
 set.seed(42, kind = "Mersenne-Twister", normal.kind = "Inversion")
