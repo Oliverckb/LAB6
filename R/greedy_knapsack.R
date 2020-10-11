@@ -43,7 +43,7 @@ greedy_knapsack <- function(x,W){
     i <- i+1
   }
 
-  l <- list(value=round(value),elements=elements)
+  l <- list(value=round(value),elements=sort(elements))
   return(l)
 }
 

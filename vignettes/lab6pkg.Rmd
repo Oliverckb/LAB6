@@ -31,7 +31,7 @@ knapsack_objects <- data.frame(
 
 # **The Knapsack Problem**
 
-This package contain three different functions for solving _the Knapsack Problem_:
+This package contains three different functions for solving _the Knapsack Problem_:
 
 **1. brute_force_knapsack**
 
@@ -41,25 +41,45 @@ This package contain three different functions for solving _the Knapsack Problem
 
 ## First function: **brute_force_knapsack()**
 
-The only solution that is guaranteed to give a correct answer in all situations for the knapsack problem
-is using brute-force search, i.e. going through all possible alternatives and return the maximum value
-found. This approach is of complexity $O(2^n)$ since all possible combinations $2^n$ needs to be evaluated.
+The only solution that is guaranteed to give a correct answer in all situations for the knapsack problem is using brute-force search, i.e. going through all possible alternatives and return the maximum value found. This approach is of complexity $O(2^n)$ since all possible combinations $2^n$ needs to be evaluated.
 
 
-The Algorithm can be executed as shown below. The time taken for 16 objects is shown below.
+The Algorithm can be executed as shown below. The time taken for $n=16$ objects is shown below.
 
 ```{r runCode, echo=TRUE}
 set.seed(42, kind = "Mersenne-Twister", normal.kind = "Inversion")
 n <- 16
 knapsack_objects <- data.frame(w=sample(1:4000, size = n, replace = TRUE),v=runif(n = n, 0, 10000))
-brute_force_knapsack(knapsack_objects[1:12,],2000)
+brute_force_knapsack(knapsack_objects[1:12,],3500)
 system.time(brute_force_knapsack(knapsack_objects[1:12,],3500))
+system.time(brute_force_knapsack(knapsack_objects[1:12,],3500,parallel=TRUE))
 ```
 
-<p> After profiling, it can be seen that it is taking too much time in serial operation.The time taken for $n=16$ objects. 
+<p> After Parallelizing, the run time shortened significantly.
+ 
+<p> After profiling, it can be seen that it is taking too much time in serial operation.The time taken for $n=16$ objects.
+
+<<<<<<< HEAD
+```{r ,include=FALSE}
+devtools::install_github("hadley/lineprof")
+library(lineprof)
+#Put your source path below:
+source('~/R assignments/lab6/LAB6/R/brute_force_knapsack.R', echo=TRUE)
+b <- lineprof(brute_force_knapsack())
+summary(b)
+
+```
+
+```{r profilingb, echo=FALSE}
+
+summary(b)
+```
+=======
+
+>>>>>>> 55b6653d07955bc1a7262af1d735c50366e5eb96
 
 ## Second function: **Knapsack_dynamic()**
-<p> The Algorithm can be executed and the time taken for n=500 objects as shown below. As it can be seen that dynamic algorithm is  faster than the Brute Force because the dynamic algorithm will run in $O(Wn)$
+<p> The Algorithm can be executed and the time taken for $n=500$ objects as shown below. As it can be seen that the dynamic algorithm is faster than the brute force because the dynamic algorithm will run in $O(Wn)$.
 
 ```{r}
 set.seed(42, kind = "Mersenne-Twister", normal.kind = "Inversion")
@@ -70,8 +90,22 @@ system.time(knapsack_dynamic(knapsack_objects[1:12,],3500))
 
 ```
 
+And the result of profiling comes below:
+```{r ,include=FALSE}
+#devtools::install_github("hadley/lineprof")
+library(lineprof)
+source('~/R assignments/lab6/LAB6/R/knapsack_dynamic.R', echo=TRUE)
+d <- lineprof(knapsack_dynamic())
+summary(d)
+```
+
+```{r profilingd, echo=FALSE}
+
+summary(d)
+```
+
 ## Third function: **greedy_knapsack()**
-<p> The Algorithm can be executed and the time taken for n=10000 objects as shown below. Greedy algorithm is the fastest of all because the computational complexity for this algorithm is $O(nlogn)$ due to its sorting mechanism.  
+<p> The Algorithm can be executed and the time taken for $n=10000$ objects as shown below. Greedy algorithm is _not most accurate algorithm_, but is the fastest of all because the computational complexity for this algorithm is $O(nlogn)$ due to its sorting mechanism.  
 
 ```{r}
 set.seed(42, kind = "Mersenne-Twister", normal.kind = "Inversion")
@@ -79,4 +113,19 @@ n <- 10000
 knapsack_objects <- data.frame(w=sample(1:4000, size = n, replace = TRUE),v=runif(n = n, 0, 10000))
 greedy_knapsack(knapsack_objects[1:12,],3500)
 system.time(greedy_knapsack(knapsack_objects[1:12,],3500))
+```
+
+And the result of profiling comes below:
+
+```{r ,include=FALSE}
+#devtools::install_github("hadley/lineprof")
+library(lineprof)
+source('~/R assignments/lab6/LAB6/R/greedy_knapsack.R', echo=TRUE)
+g <- lineprof(greedy_knapsack())
+summary(g)
+```
+
+```{r profilingg, echo=FALSE}
+
+summary(g)
 ```

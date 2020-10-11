@@ -54,6 +54,7 @@ brute_force_knapsack <- function(x, W, parallel=FALSE)
   
   else 
   {
+    #library(parallel)
     object <- NULL
     weight <- NULL
     value <- NULL
