@@ -1,10 +1,10 @@
 #' brute force
-#' @name Knapsack_brute_force 
+#' @name brute_force_knapsack 
 #' @param x is a data frame with two columns w(weight) and v(value)
-#' @param W is maximum weight(capacity) of kanpsack 
+#' @param W is maximum weight(capacity) of knapsack 
 #' @return \code{list} List of object containing \code{value} giving maximum value of Knapsack out of dataframe and \code{elements} giving weight of 
 #' selected elements from data frame x 
-#' @usage knapsack_brute_force(x,W)
+#' @usage brute_force_knapsack(x,W)
 #'
 #' @examples
 #'   RNGversion(min(as.character(getRversion()),"3.6.1"))
@@ -12,7 +12,7 @@
 #'   n <- 2000
 #'   knapsack_objects <-data.frame(w=sample(1:4000, size = n, replace = TRUE),
 #'                              v=runif(n = n, 0, 10000))
-#'   l<-knapsack_brute_force(knapsack_objects[1:12,],3500)
+#'   l<-knapsack_brute_force_knapsack(knapsack_objects[1:12,],3500)
 #'   
 #' @description The knapsack problem is a problem in combinatorial optimization:
 #' Given a set of items, each with a weight and a value,
@@ -30,7 +30,7 @@ knapsack_objects <-data.frame(w=sample(1:4000, size = n, replace = TRUE),
                               v=runif(n = n, 0, 10000)
 )
 
-knapsack_BruteForce <- function(x, W, parallel=FALSE)
+brute_force_knapsack <- function(x, W, parallel=FALSE)
 {
   stopifnot(is.data.frame(x) || is.numeric(n) || W >= 0 )
   
@@ -90,4 +90,14 @@ knapsack_BruteForce <- function(x, W, parallel=FALSE)
   return(knapsack)
 }
 
-system.time(knapsack_BruteForce(knapsack_objects[1:16,] , 3500))
+#Question How much time does it takes to run the algorithm for n = 500 objects?
+# system.time(brute_force_knapsack(knapsack_objects[1:16,] , 3500))
+# user  system elapsed 
+# 0.68    0.00    0.67
+
+# Profiling
+# install library --> devtools::install_github("hadley/lineprof")
+# library(lineprof)
+# source("")
+# l <- lineprof(greedy_knapsack())
+# l

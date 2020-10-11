@@ -80,3 +80,10 @@ knapsack_dynamic <- function(x,W){
   }
 }
 #system.time(knapsack_dynamic(knapsack_objects[1:12,],3500))
+
+# Profiling
+# install library --> devtools::install_github("hadley/lineprof")
+# library(lineprof)
+# source("")
+# l <- lineprof(greedy_knapsack())
+# l

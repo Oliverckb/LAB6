@@ -57,3 +57,10 @@ greedy_knapsack <- function(x,W){
 #
 # l1 <- greedy_knapsack(x = knapsack_objects[1:800,], W = 3500)
 # l1
+
+# Profiling
+# install library --> devtools::install_github("hadley/lineprof")
+# library(lineprof)
+# source("")
+# l <- lineprof(greedy_knapsack())
+# l
