@@ -84,9 +84,8 @@ brute_force_knapsack <- function(x, W, parallel=FALSE)
   max_value <- max(total$value[optimal_weights])
   
   index <- which(total$value == max_value)
-  y <- total$object[index]
-  print(class(y))
-  
+  y <- as.character(total$object[index])
+ 
   elements <- as.numeric(unlist(strsplit(y,",")))
   
   knapsack <- list(value = round(max_value),elements= elements)
