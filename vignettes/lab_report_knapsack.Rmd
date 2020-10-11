@@ -60,6 +60,19 @@ RUN TIME with parallel equal to FALSE: 0.19 second
  
 <p> After profiling, it can be seen that it is taking too much time in serial operation.The time taken for $n=16$ objects.
 
+```
+ time           alloc          release       dups     
+Min.   :0.001   Min.   :0.000   Min.   :0   Min.   : 890  
+1st Qu.:0.001   1st Qu.:1.817   1st Qu.:0   1st Qu.:1347  
+Median :0.001   Median :3.634   Median :0   Median :1804  
+Mean   :0.001   Mean   :3.634   Mean   :0   Mean   :1804  
+3rd Qu.:0.001   3rd Qu.:5.450   3rd Qu.:0   3rd Qu.:2262  
+Max.   :0.001   Max.   :7.267   Max.   :0   Max.   :2719  
+ref.Length  ref.Class    ref.Mode 
+3           data.frame  list      
+3           data.frame  list    
+```
+
 ## Second function: **Knapsack_dynamic()**
 <p> The Algorithm can be executed and the time taken for $n=500$ objects as shown below. As it can be seen that the dynamic algorithm is faster than the brute force because the dynamic algorithm will run in $O(Wn)$.
 
@@ -71,6 +84,21 @@ knapsack_dynamic(knapsack_objects[1:12,],3500)
 system.time(knapsack_dynamic(knapsack_objects,3500))
 
 ```
+And the result of profiling comes below:
+
+```
+time           alloc          release       dups     
+ Min.   :0.001   Min.   :0.000   Min.   :0   Min.   :1458  
+ 1st Qu.:0.001   1st Qu.:2.097   1st Qu.:0   1st Qu.:1988  
+ Median :0.001   Median :4.193   Median :0   Median :2518  
+ Mean   :0.001   Mean   :4.193   Mean   :0   Mean   :2518  
+ 3rd Qu.:0.001   3rd Qu.:6.290   3rd Qu.:0   3rd Qu.:3047  
+ Max.   :0.001   Max.   :8.386   Max.   :0   Max.   :3577  
+ ref.Length  ref.Class    ref.Mode 
+ 3           data.frame  list      
+ 3           data.frame  list 
+ 
+```
 
 ## Third function: **greedy_knapsack()**
 <p> The Algorithm can be executed and the time taken for $n=10000$ objects as shown below. Greedy algorithm is _not most accurate algorithm_, but is the fastest of all because the computational complexity for this algorithm is $O(nlogn)$ due to its sorting mechanism.  
@@ -81,4 +109,20 @@ n <- 10000
 knapsack_objects <- data.frame(w=sample(1:4000, size = n, replace = TRUE),v=runif(n = n, 0, 10000))
 greedy_knapsack(knapsack_objects[1:12,],3500)
 system.time(greedy_knapsack(knapsack_objects[1:12,],3500))
+```
+
+And the result of profiling comes below:
+
+
+```
+      time           alloc         release       dups       
+ Min.   :0.001   Min.   :0.00   Min.   :0   Min.   : 532.0  
+ 1st Qu.:0.001   1st Qu.:1.34   1st Qu.:0   1st Qu.: 920.8  
+ Median :0.001   Median :2.68   Median :0   Median :1309.5  
+ Mean   :0.001   Mean   :2.68   Mean   :0   Mean   :1309.5  
+ 3rd Qu.:0.001   3rd Qu.:4.02   3rd Qu.:0   3rd Qu.:1698.2  
+ Max.   :0.001   Max.   :5.36   Max.   :0   Max.   :2087.0  
+ ref.Length  ref.Class    ref.Mode 
+ 3           data.frame  list      
+ 3           data.frame  list      
 ```
