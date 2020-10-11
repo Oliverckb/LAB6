@@ -52,8 +52,9 @@ n <- 16
 knapsack_objects <- data.frame(w=sample(1:4000, size = n, replace = TRUE),v=runif(n = n, 0, 10000))
 brute_force_knapsack(knapsack_objects[1:12,],3500)
 system.time(brute_force_knapsack(knapsack_objects[1:12,],3500))
-system.time(brute_force_knapsack(knapsack_objects[1:12,],3500,parallel=TRUE))
 ```
+RUN TIME with parallel equal to FALSE: 0.69 second
+RUN TIME with parallel equal to FALSE: 0.19 second
 
 <p> After Parallelizing, the run time shortened significantly.
  
