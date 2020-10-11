@@ -30,34 +30,37 @@ knapsack_objects <-data.frame(w=sample(1:4000, size = n, replace = TRUE),
                               v=runif(n = n, 0, 10000)
 )
 
-knapsack_BruteForce <- function(x, W)
+knapsack_BruteForce <- function(x, W, parallel=FALSE)
 {
   stopifnot(is.data.frame(x) || is.numeric(n) || W >= 0 )
+  
   if(parallel == FALSE)
   {
     object <- NULL
     weight <- NULL
     value <- NULL
-    elements <- c()
+    elements <- NULL
     
-    for(i in 1:length(x$w)){
-      object <- c(object,combn(rownames(x), i,paste,collapse = ","))
+    for(i in 1:length(x$w))
+      {
+      object <- c(object,combn(1:length(x$w), i,paste,collapse = ","))
       weight <- c(weight,combn(x$w,i,sum))
       value <- c(value,combn(x$v,i,sum))
       total <- data.frame(object=object, weight=weight, value=value)
-    }
+      }
   }
   
-  else if (parallel == TRUE)
+  else
   {
     library(parallel)
     numofCores <- detectCores()-2
     cl <- makeCluster(numofCores)
     clusterExport(cl, c('x'), envir = environment())
     clusterEvalQ(cl , {require(parallel)})
-    object <- parLapply(cl, 1:length(x$w), function(t,f) {combn(rownames(x),t,paste,collapse = ",")}, f=my_fun)
-    weight <- parLapply(cl, 1:length(x$w), function(t,f) {combn(x$w,t,sum)}, f=my_fun)
-    value  <- parLapply(cl, 1:length(x$v), function(t,f) {combn(x$v,t,sum)}, f=my_fun)
+    object <- parLapply(cl, 1:length(x$w), function(t) {combn(rownames(x),t,paste,collapse = ",")})
+    weight <- parLapply(cl, 1:length(x$w), function(t) {combn(x$w,t,sum)})
+    value  <- parLapply(cl, 1:length(x$v), function(t) {combn(x$v,t,sum)})
+    total <- data.frame(object=object, weight=weight, value=value)
     stopCluster(cl)
   }
 
