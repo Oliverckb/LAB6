@@ -85,5 +85,5 @@ knapsack_dynamic <- function(x,W){
 # install library --> devtools::install_github("hadley/lineprof")
 # library(lineprof)
 # source("")
-# l <- lineprof(greedy_knapsack())
+# l <- lineprof(knapsack_dynamic())
 # l

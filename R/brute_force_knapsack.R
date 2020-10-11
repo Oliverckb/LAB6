@@ -99,5 +99,5 @@ brute_force_knapsack <- function(x, W, parallel=FALSE)
 # install library --> devtools::install_github("hadley/lineprof")
 # library(lineprof)
 # source("")
-# l <- lineprof(greedy_knapsack())
+# l <- lineprof(brute_force_knapsack())
 # l
