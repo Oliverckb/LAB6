@@ -24,13 +24,12 @@
 #' @importFrom utils combn
 #' @export
  
-set.seed(42)
-# RNGversion(min(as.character(getRversion()),"4.0.2"))
-# set.seed(42,kind="Mersenne-Twister",normal.kind = "Inversion")
-n <- 2000
-knapsack_objects <-data.frame(w=sample(1:4000, size = n, replace = TRUE),
-                              v=runif(n = n, 0, 10000)
-)
+# # set.seed(42)
+# # # RNGversion(min(as.character(getRversion()),"4.0.2"))
+# # # set.seed(42,kind="Mersenne-Twister",normal.kind = "Inversion")
+# # n <- 2000
+# knapsack_objects <-data.frame(w=sample(1:4000, size = n, replace = TRUE),
+#                               v=runif(n = n, 0, 10000))
 
 brute_force_knapsack <- function(x, W, parallel=FALSE)
 {
@@ -92,7 +91,7 @@ brute_force_knapsack <- function(x, W, parallel=FALSE)
   return(knapsack)
 }
 
-#Question How much time does it takes to run the algorithm for n = 500 objects?
+#Question How much time does it takes to run the algorithm for n = 16 objects?
 # system.time(brute_force_knapsack(knapsack_objects[1:12,] , 3500))
 # user  system elapsed 
 # 0.90    0.00    0.91
