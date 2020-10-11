@@ -1,4 +1,4 @@
-#' brute force
+#' Brute force Solution for Knapsack Problem
 #' @name brute_force_knapsack 
 #' @param x is a data frame with two columns w(weight) and v(value)
 #' @param W is maximum weight(capacity) of knapsack 
@@ -15,10 +15,9 @@
 #'                              v=runif(n = n, 0, 10000))
 #'   l<-brute_force_knapsack(knapsack_objects[1:16,] , 3500,FALSE)
 #'   
-#' @description The knapsack problem is a problem in combinatorial optimization:
-#' Given a set of items, each with a weight and a value,
-#' determine the number of each item to include in a collection 
-#' so that the total weight is less than or equal to a given limit and the total value is as large as possible.
+#' @description The knapsack problem is a combinatorial optimization problem.
+#' A dataframe is given having two parameters, weight and value. 
+#' Each value has its own weight and we have to pack items with maximum value and within weight capacity.
 #' This function will run in O<2^n>.
 #' @seealso  \url{https://en.wikipedia.org/wiki/Knapsack_problem#0.2F1_knapsack_problem}
 #' @import parallel
@@ -104,3 +103,4 @@ brute_force_knapsack <- function(x, W, parallel=FALSE)
 # source("")
 # l <- lineprof(brute_force_knapsack())
 # l
+# shine(l)

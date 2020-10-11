@@ -15,6 +15,7 @@
 #'   knapsack_objects <-data.frame(w=sample(1:4000, size = n, replace = TRUE),
 #'                              v=runif(n = n, 0, 10000))
 #'  l1 <- greedy_knapsack(x = knapsack_objects[1:800,], W = 3500)
+#'@seealso  \url{https://en.wikipedia.org/wiki/Knapsack_problem#Greedy_approximation_algorithm}
 #'@export
 
 greedy_knapsack <- function(x,W){
@@ -64,3 +65,4 @@ greedy_knapsack <- function(x,W){
 # source("")
 # l <- lineprof(greedy_knapsack())
 # l
+# shine(l)
