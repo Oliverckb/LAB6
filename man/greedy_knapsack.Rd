@@ -25,3 +25,6 @@ implement the function using greedy method.
                              v=runif(n = n, 0, 10000))
  l1 <- greedy_knapsack(x = knapsack_objects[1:800,], W = 3500)
 }
+\seealso{
+\url{https://en.wikipedia.org/wiki/Knapsack_problem#Greedy_approximation_algorithm}
+}

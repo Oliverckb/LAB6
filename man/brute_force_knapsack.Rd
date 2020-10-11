@@ -2,7 +2,7 @@
 % Please edit documentation in R/brute_force_knapsack.R
 \name{brute_force_knapsack}
 \alias{brute_force_knapsack}
-\title{brute force}
+\title{Brute force Solution for Knapsack Problem}
 \usage{
 brute_force_knapsack(x,W,parallel)
 }
@@ -18,10 +18,9 @@ brute_force_knapsack(x,W,parallel)
 selected elements from data frame x
 }
 \description{
-The knapsack problem is a problem in combinatorial optimization:
-Given a set of items, each with a weight and a value,
-determine the number of each item to include in a collection 
-so that the total weight is less than or equal to a given limit and the total value is as large as possible.
+The knapsack problem is a combinatorial optimization problem.
+A dataframe is given having two parameters, weight and value. 
+Each value has its own weight and we have to pack items with maximum value and within weight capacity.
 This function will run in O<2^n>.
 }
 \examples{
