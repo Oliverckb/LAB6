@@ -11,5 +11,8 @@ Encoding: UTF-8
 Imports: parallel
 LazyData: true
 Suggests: 
-    testthat
+    testthat,
+    knitr,
+    rmarkdown
 RoxygenNote: 7.1.1
+VignetteBuilder: knitr
