@@ -1,5 +1,5 @@
 ---
-title: "Lab_Report_Knapsack"
+title: "lab_report_knapsack"
 author: "Aqsa, Oliver and Samira"
 output: rmarkdown::html_vignette
 vignette: >
