@@ -42,36 +42,52 @@ knapsack_BruteForce <- function(x, W, parallel=FALSE)
     elements <- NULL
     
     for(i in 1:length(x$w))
-      {
+    {
       object <- c(object,combn(1:length(x$w), i,paste,collapse = ","))
       weight <- c(weight,combn(x$w,i,sum))
       value <- c(value,combn(x$v,i,sum))
       total <- data.frame(object=object, weight=weight, value=value)
-      }
+    }
   }
   
-  else
+  else 
   {
     library(parallel)
+    object <- NULL
+    weight <- NULL
+    value <- NULL
+    elements <- NULL
+   
     numofCores <- detectCores()-2
     cl <- makeCluster(numofCores)
     clusterExport(cl, c('x'), envir = environment())
     clusterEvalQ(cl , {require(parallel)})
-    object <- parLapply(cl, 1:length(x$w), function(t) {combn(rownames(x),t,paste,collapse = ",")})
-    weight <- parLapply(cl, 1:length(x$w), function(t) {combn(x$w,t,sum)})
-    value  <- parLapply(cl, 1:length(x$v), function(t) {combn(x$v,t,sum)})
-    total <- data.frame(object=object, weight=weight, value=value)
+   
+    object <- parLapply(cl, 1:length(x$w), function(t) {
+      
+      combn(1:length(x$w),t,paste,collapse = ",")
+      
+      })
+    weight <- parLapply(cl, 1:length(x$w), function(t) {
+      combn(x$w,t,sum)
+      })
+    value  <- parLapply(cl, 1:length(x$v), function(t) {
+      combn(x$v,t,sum)
+      })
+    total  <- data.frame(object=unlist(object), weight=unlist(weight), value=unlist(value))
     stopCluster(cl)
   }
-
-optimal_weights <- which(total$weight<=W)
-max_value <- max(total$value[optimal_weights])
-
-index <- which(total$value == max_value)
-y <- total$object[index]
-
-elements <- as.numeric(unlist(strsplit(y,",")))
-
-knapsack <- list(value = round(max_value),elements= elements)
-return(knapsack)
+  
+  optimal_weights <- which(total$weight<=W)
+  max_value <- max(total$value[optimal_weights])
+  
+  index <- which(total$value == max_value)
+  y <- total$object[index]
+  
+  elements <- as.numeric(unlist(strsplit(y,",")))
+  
+  knapsack <- list(value = round(max_value),elements= elements)
+  return(knapsack)
 }
+
+system.time(knapsack_BruteForce(knapsack_objects[1:16,] , 3500))
