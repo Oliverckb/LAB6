@@ -4,12 +4,14 @@
 \alias{brute_force_knapsack}
 \title{brute force}
 \usage{
-brute_force_knapsack(x,W)
+brute_force_knapsack(x,W,parallel)
 }
 \arguments{
 \item{x}{is a data frame with two columns w(weight) and v(value)}
 
 \item{W}{is maximum weight(capacity) of knapsack}
+
+\item{parallel}{is to tell R whether or not to use parallel computation}
 }
 \value{
 \code{list} List of object containing \code{value} giving maximum value of Knapsack out of dataframe and \code{elements} giving weight of 
@@ -28,7 +30,7 @@ This function will run in O<2^n>.
   n <- 2000
   knapsack_objects <-data.frame(w=sample(1:4000, size = n, replace = TRUE),
                              v=runif(n = n, 0, 10000))
-  l<-knapsack_brute_force_knapsack(knapsack_objects[1:12,],3500)
+  l<-brute_force_knapsack(knapsack_objects[1:16,] , 3500,FALSE)
   
 }
 \seealso{

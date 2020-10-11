@@ -1,10 +1,11 @@
 context("knapsack_dynamic")
 
-RNGversion(min(as.character(getRversion()),"3.5.9"))
-set.seed(42, kind = "Mersenne-Twister", normal.kind = "Inversion")
+suppressWarnings(RNGversion("3.5.9"))
+set.seed(42)
 n <- 2000
-knapsack_objects <- data.frame(w=sample(1:4000, size = n, replace = TRUE),
-                               v=runif(n = n, 0, 10000))
+knapsack_objects <- data.frame(
+  w=sample(1:4000, size = n, replace = TRUE),
+  v=runif(n = n, 0, 10000))
 
 test_that("Correct object is returned", {
   expect_silent(bfk <- knapsack_dynamic(x = knapsack_objects[1:8,], W = 3500))
