@@ -13,7 +13,11 @@
 #'   n <- 2000
 #'   knapsack_objects <-data.frame(w=sample(1:4000, size = n, replace = TRUE),
 #'                              v=runif(n = n, 0, 10000))
+<<<<<<< HEAD
 #'   l<-brute_force_knapsack(knapsack_objects[1:16,] , 3500,FALSE)
+=======
+#'   l<- brute_force_knapsack(knapsack_objects[1:12,],3500)
+>>>>>>> aee2ea0fc08c97609c4a592ae5db446fabeca67a
 #'   
 #' @description The knapsack problem is a problem in combinatorial optimization:
 #' Given a set of items, each with a weight and a value,
@@ -35,6 +39,7 @@
 
 brute_force_knapsack <- function(x, W, parallel=FALSE)
 {
+
   stopifnot(exprs = {is.data.frame(x);W >= 0})
   
   if(parallel == FALSE)

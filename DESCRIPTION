@@ -3,9 +3,9 @@ Type: Package
 Title: functions for knapsack problem
 Version: 0.1.0
 Author: Chen,Aqsa,Samira
-Maintainer: CHEN <Olivandtempest@gmail.com>,Aqsa<aqsaciit@gmail.com>,Samira<Samiraee@gmail.com>
-Description: Description: The package solves the knapsack problem by using three different methods and then
-    compares the system time to check efficiency of each method seperatly.
+Maintainer: CHEN <Olivandtempest@gmail.com>,Aqsa<aqsaciit@gmail.com>,Samira<samiraee@gmail.com>
+Description: The package solves the knapsack problem by using three different methods and then
+    compares the system time to check efficiency of each method separately.
 License: GPL-3
 Encoding: UTF-8
 Imports: parallel

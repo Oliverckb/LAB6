@@ -5,7 +5,7 @@
 #'
 #'@description implement the function using greedy method.
 #'
-#'@return list with maximium value and picked elements
+#'@return list with maximum value and picked elements
 #'@usage  greedy_knapsack(x,W)
 #'
 #'@examples
