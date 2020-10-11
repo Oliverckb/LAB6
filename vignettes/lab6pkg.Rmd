@@ -54,11 +54,9 @@ n <- 16
 knapsack_objects <- data.frame(w=sample(1:4000, size = n, replace = TRUE),v=runif(n = n, 0, 10000))
 brute_force_knapsack(knapsack_objects[1:12,],2000)
 system.time(brute_force_knapsack(knapsack_objects[1:12,],3500))
-#parallel
-system.time(brute_force_knapsack(knapsack_objects[1:12,],3500,TRUE))
 ```
 
-<p> After profiling, it can be seen that it is taking too much time in serial operation.The time taken for $n=16$ objects. After parallelizing brute force function, the running time is shortened significantly.
+<p> After profiling, it can be seen that it is taking too much time in serial operation.The time taken for $n=16$ objects. 
 
 ## Second function: **Knapsack_dynamic()**
 <p> The Algorithm can be executed and the time taken for n=500 objects as shown below. As it can be seen that dynamic algorithm is  faster than the Brute Force because the dynamic algorithm will run in $O(Wn)$
