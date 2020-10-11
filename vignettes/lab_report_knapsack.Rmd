@@ -1,5 +1,5 @@
 ---
-title: "lab6pkg"
+title: "Lab_Report_Knapsack"
 author: "Aqsa, Oliver and Samira"
 output: rmarkdown::html_vignette
 vignette: >
@@ -108,7 +108,7 @@ set.seed(42, kind = "Mersenne-Twister", normal.kind = "Inversion")
 n <- 10000
 knapsack_objects <- data.frame(w=sample(1:4000, size = n, replace = TRUE),v=runif(n = n, 0, 10000))
 greedy_knapsack(knapsack_objects[1:12,],3500)
-system.time(greedy_knapsack(knapsack_objects[1:12,],3500))
+system.time(greedy_knapsack(knapsack_objects,3500))
 ```
 
 And the result of profiling comes below:
