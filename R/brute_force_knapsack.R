@@ -24,16 +24,16 @@
 #' @importFrom utils combn
 #' @export
  
-# # set.seed(42)
-# # # RNGversion(min(as.character(getRversion()),"4.0.2"))
-# # # set.seed(42,kind="Mersenne-Twister",normal.kind = "Inversion")
-# # n <- 2000
+# set.seed(42)
+# RNGversion(min(as.character(getRversion()),"4.0.2"))
+# set.seed(42,kind="Mersenne-Twister",normal.kind = "Inversion")
+# n <- 2000
 # knapsack_objects <-data.frame(w=sample(1:4000, size = n, replace = TRUE),
 #                               v=runif(n = n, 0, 10000))
 
 brute_force_knapsack <- function(x, W, parallel=FALSE)
 {
-  stopifnot(exprs = {is.data.frame(x);W >= 0})
+  stopifnot(is.data.frame(x),W >= 0)
   
   if(parallel == FALSE)
   {
@@ -53,7 +53,7 @@ brute_force_knapsack <- function(x, W, parallel=FALSE)
   
   else 
   {
-    # library(parallel)
+    library(parallel)
     object <- NULL
     weight <- NULL
     value <- NULL
@@ -84,6 +84,7 @@ brute_force_knapsack <- function(x, W, parallel=FALSE)
   
   index <- which(total$value == max_value)
   y <- total$object[index]
+  print(class(y))
   
   elements <- as.numeric(unlist(strsplit(y,",")))
   
